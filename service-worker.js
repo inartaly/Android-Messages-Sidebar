@@ -8,4 +8,6 @@ chrome.runtime.onInstalled.addListener(() => {
     path: 'https://messages.google.com/web/authentication',
     enabled: true
   });
+  // This opens the side panel immediately after installation
+  console.log("Extension installed. Ready to message!");
 });
