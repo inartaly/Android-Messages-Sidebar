@@ -1,9 +1,23 @@
-// Ensure the side panel opens on click
 chrome.sidePanel
   .setPanelBehavior({ openPanelOnActionClick: true })
   .catch((error) => console.error(error));
 
-// Force the service worker to stay "alive" during the initial setup
-chrome.runtime.onInstalled.addListener(() => {
-  console.log("Android Messages Sidebar extension installed and rules active.");
+// This listener modifies headers on the fly without needing a separate rules.json
+chrome.declarativeNetRequest.updateDynamicRules({
+  addRules: [{
+    id: 1,
+    priority: 1,
+    action: {
+      type: "modifyHeaders",
+      responseHeaders: [
+        { header: "x-frame-options", operation: "remove" },
+        { header: "content-security-policy", operation: "remove" }
+      ]
+    },
+    condition: {
+      urlFilter: "https://messages.google.com/*",
+      resourceTypes: ["sub_frame"]
+    }
+  }],
+  removeRuleIds: [1]
 });
