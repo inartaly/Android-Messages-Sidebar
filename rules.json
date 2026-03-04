@@ -6,12 +6,14 @@
       "type": "modifyHeaders",
       "responseHeaders": [
         { "header": "x-frame-options", "operation": "remove" },
-        { "header": "content-security-policy", "operation": "remove" }
+        { "header": "content-security-policy", "operation": "remove" },
+        { "header": "cross-origin-resource-policy", "operation": "remove" },
+        { "header": "cross-origin-embedder-policy", "operation": "remove" }
       ]
     },
     "condition": {
-      "urlFilter": "https://messages.google.com/*",
-      "resourceTypes": ["sub_frame"]
+      "urlFilter": "*://messages.google.com/*",
+      "resourceTypes": ["sub_frame", "main_frame"]
     }
   }
 ]
