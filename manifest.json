@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Android Messages Sidebar",
-  "version": "1.4",
-  "permissions": ["sidePanel", "declarativeNetRequest"],
-  "host_permissions": ["*://messages.google.com/*"],
+  "version": "1.5",
+  "permissions": ["sidePanel"],
+  "host_permissions": ["https://messages.google.com/*"],
+  "action": {
+    "default_title": "Open Android Messages"
+  },
   "background": {
     "service_worker": "service-worker.js"
-  },
-  "side_panel": {
-    "default_path": "sidepanel.html"
   }
 }
