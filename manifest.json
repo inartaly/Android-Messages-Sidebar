@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Android Messages Sidebar",
+  "version": "1.0",
+  "description": "Access Google Messages from your browser sidebar.",
+  "permissions": ["sidePanel"],
+  "host_permissions": ["https://messages.google.com/*"],
+  "action": {
+    "default_title": "Open Android Messages"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}
