@@ -1,13 +1,11 @@
-chrome.sidePanel
-  .setPanelBehavior({ openPanelOnActionClick: true })
-  .catch((error) => console.error(error));
+// Make the toolbar icon open the GLOBAL side panel instead of a tab-scoped one
+chrome.action.onClicked.addListener(() => {
+  chrome.sidePanel.open({ windowId: chrome.windows.WINDOW_ID_CURRENT });
+});
 
+// Ensure the global panel is enabled
 chrome.runtime.onInstalled.addListener(() => {
-  // This tells the extension: "When you open the sidebar, go straight to Google"
   chrome.sidePanel.setOptions({
-    path: 'https://messages.google.com/web/authentication',
     enabled: true
   });
-  // This opens the side panel immediately after installation
-  console.log("Extension installed. Ready to message!");
 });
