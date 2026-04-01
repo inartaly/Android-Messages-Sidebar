@@ -1,30 +1,25 @@
 {
   "manifest_version": 3,
   "name": "Android Messages Sidebar",
-  "description": "Quick access to Android Messages in the Edge sidebar.",
   "version": "1.7",
-
+  "permissions": ["sidePanel"],
+  "host_permissions": ["https://messages.google.com/*"],
+  "action": {
+    "default_title": "Open Google Messages",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
   "icons": {
     "16": "icon16.png",
     "32": "icon32.png",
     "48": "icon48.png",
     "128": "icon128.png"
-  },
-
-  "permissions": ["sidePanel"],
-
-  "side_panel": {
-    "default_path": "sidepanel.html"
-  },
-
-  "action": {
-    "default_icon": {
-      "16": "icon16.png",
-      "32": "icon32.png"
-    }
-  },
-
-  "background": {
-    "service_worker": "service-worker.js"
   }
 }
